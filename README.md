@@ -1,5 +1,3 @@
-# Demand Prediction Models
-
 ```bash
   _______    _____    _____               __     __                
  |__   __|  / ____|  / ____|              \ \   / /                
@@ -23,16 +21,13 @@ demand-prediction-models/
 ├── MATLAB/                           # Classical time-series models (MATLAB)
 │   ├── ARMA/                         # ARMA (AutoRegressive Moving Average)
 │   │   ├── arma.m                    # Training, forecasting, and evaluation script
-│   │   └── README.md                 
+│   │   └── README.md
 │   ├── ARIMA/                        # ARIMA (AutoRegressive Integrated MA)
 │   │   ├── arima.m
 │   │   └── README.md
-│   ├── AWT/                          # AWT (ARIMA with Wavelet Transform)
-│   │   ├── awt.m
-│   │   └── README.md
-│   └── AFT/                          # AFT (ARIMA with Fourier Transform)
-│       ├── aft.m                     # Fourier decomposition and ARIMA modeling script
-│       └── README.md                 # AFT-specific instructions
+│   └── AWT/                          # AWT (ARIMA with Wavelet Transform)
+│       ├── awt.m
+│       └── README.md
 │
 ├── Python/                           # Machine-learning and hybrid pipelines (Python)
 │   ├── PROPHET/                      # Facebook Prophet model
@@ -47,8 +42,11 @@ demand-prediction-models/
 │   ├── LSTM/                         # Long Short-Term Memory network
 │   │   ├── lstm.ipynb
 │   │   └── requirements.txt
-│   └── LSTM-Wavelet-RF/              # Hybrid wavelet + LSTM + Random Forest
-│       ├── lstm_wavelet_rf.ipynb
+│   ├── LSTM-Wavelet-RF/              # Hybrid wavelet + LSTM + Random Forest
+│   │   ├── lstm_wavelet_rf.ipynb
+│   │   └── requirements.txt
+│   └── AFT/                          # AFT (ARIMA with Fourier Transform) in Python
+│       ├── aft.ipynb                 # Notebook for Fourier filter and ARIMA modeling
 │       └── requirements.txt
 │
 └── LICENSE                           # MIT License
@@ -70,11 +68,11 @@ demand-prediction-models/
 3. **Running MATLAB models**
 
    * Requires MATLAB R2021a or later (Signal Processing and Wavelet Toolboxes for AWT).
-   * Navigate to the desired model folder (e.g., `MATLAB/ARMA/`, `MATLAB/ARIMA/`, `MATLAB/AWT/`, or `MATLAB/AFT/`), and run:
+   * Navigate to the desired model folder (`MATLAB/ARMA/`, `MATLAB/ARIMA/`, or `MATLAB/AWT/`), and run:
 
      ```matlab
-     % Example in MATLAB/AFT/
-     aft
+     % Example in MATLAB/AWT/
+     awt
      ```
    * Outputs: forecasts, error metrics (MSE, RMSE, MAPE), and saved plots.
 
@@ -87,12 +85,13 @@ demand-prediction-models/
                  -r Python/RF/requirements.txt \
                  -r Python/MLP/requirements.txt \
                  -r Python/LSTM/requirements.txt \
-                 -r Python/LSTM-Wavelet-RF/requirements.txt
+                 -r Python/LSTM-Wavelet-RF/requirements.txt \
+                 -r Python/AFT/requirements.txt
      ```
    * Launch Jupyter Lab for your chosen notebook:
 
      ```bash
-     jupyter lab Python/RF/rf.ipynb
+     jupyter lab Python/AFT/aft.ipynb  # or another folder of choice
      ```
 
 ## Model Overview
@@ -100,7 +99,7 @@ demand-prediction-models/
 * **ARMA (MATLAB)**: Models autocorrelation in stationary series with autoregressive and moving-average components.
 * **ARIMA (MATLAB)**: Extends ARMA with differencing to handle non-stationarity.
 * **AWT (MATLAB)**: Applies wavelet decomposition before ARIMA for multi-resolution analysis.
-* **AFT (MATLAB)**: Uses Fourier decomposition to extract periodic and seasonal components prior to ARIMA modeling.
+* **AFT (Python)**: Uses Fourier decomposition to extract periodic and seasonal components prior to ARIMA modeling.
 * **Prophet (Python)**: Additive model handling trends, seasonality, and holiday effects.
 * **Random Forest (Python)**: Ensemble tree regressor capturing nonlinear relationships.
 * **MLP (Python)**: Feed-forward neural network (multilayer perceptron).
